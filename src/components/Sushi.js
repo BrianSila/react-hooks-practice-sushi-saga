@@ -1,17 +1,12 @@
 import React from "react";
 
-function Sushi({ name, image, price}) {
+function Sushi({ id, name, image, price, onEaten, isEaten }) {
   return (
     <div className="sushi">
-      <div className="plate" onClick={/* Give me a callback! */ null}>
-        {/* Tell me if this sushi has been eaten! */}
-        {false ? null : (
-          <img
-            src={image ? image : null}
-            alt={name ? name : "Sushi"}
-            width="100%"
-          />
-        )}
+      <div className="plate" onClick={() => !isEaten && onEaten(id)}>
+        {!isEaten ? (
+          <img src={image} alt={name ? name : "Sushi"} width="100%" />
+        ) : null}
       </div>
       <h4 className="sushi-details">
         {name} - $ {price}
